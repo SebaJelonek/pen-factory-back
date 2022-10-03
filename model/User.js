@@ -28,8 +28,8 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.static.login = async function (login, password) {
-  const user = this.findOne({ login });
+userSchema.statics.login = async function (login, password) {
+  const user = await this.findOne({ login });
   const message = 'Wrong login and/or password';
 
   if (user === null) {
